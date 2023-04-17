@@ -19,18 +19,11 @@ console.log(controle)
 
 controle.forEach((elemento)=>{
     elemento.addEventListener('click',(evento)=>{
-        console.log(evento.target.textContent)
-        
+        manipulaDados(evento.target.textContent)
     })
 })
 
-somar.addEventListener('click',() => {
-    manipulaDados('somar')
-})
 
-subtrair.addEventListener('click',() => {
-    manipulaDados('subtrair')
-})
 
 function manipulaDados(operacao){
     if (operacao === '-'){
@@ -38,11 +31,11 @@ function manipulaDados(operacao){
             alert('Já não há mais braços !!!')
         }
         else{
-        console.log(parseInt(braco.value --))
+        braco.value = parseInt(braco.value) -1
         }
     }
     else if (operacao === '+'){
-        console.log(parseInt(braco.value ++))
+        braco.value = parseInt(braco.value)+1
     }
 }
 
