@@ -11,31 +11,29 @@ function dizOi(nome){
 }
 dizOi('victor')*/
 
-const subtrair = document.querySelector('#subtrair')
-const somar = document.querySelector('#somar')
-const braco = document.querySelector('#braco')
-const controle = document.querySelectorAll('.controle-ajuste')
-console.log(controle)
+
+const controle = document.querySelectorAll(".controle-ajuste")
 
 controle.forEach((elemento)=>{
     elemento.addEventListener('click',(evento)=>{
-        manipulaDados(evento.target.textContent)
+        /*o evento.target.parentNode vai relacionar o clique com a div correspondente para que a soma e
+        subtração de peças ocorre de forma correta para cada parte.*/
+        manipulaDados(evento.target.textContent, evento.target.parentNode)
     })
 })
 
-
-
-function manipulaDados(operacao){
+function manipulaDados(operacao,controle){
+    const peca = controle.querySelector(".controle-contador")
     if (operacao === '-'){
-        if (braco.value <= 0){
+        if (peca.value <= 0){
             alert('Já não há mais braços !!!')
         }
         else{
-        braco.value = parseInt(braco.value) -1
+        peca.value = parseInt(peca.value) -1
         }
     }
     else if (operacao === '+'){
-        braco.value = parseInt(braco.value)+1
+        peca.value = parseInt(peca.value) +1
     }
 }
 
