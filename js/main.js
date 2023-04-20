@@ -17,6 +17,7 @@ dizOi('victor')*/
  */
 const controle = document.querySelectorAll("[data-controle]")
 //variável pecas é um objeto que tem cinco itens 
+const estatisticas = document.querySelectorAll("[data-estatistica]")
 const pecas = {
     "braco":{
         "forca" : 29,
@@ -56,6 +57,8 @@ controle.forEach((elemento)=>{
         subtração de peças ocorre de forma correta para cada parte.*/
         /*Como tem o data-controle, não é mais necessário buscar o sinal de + e - no texo, e sim no data-attribute.Então o .textContent é substituido por .dataset.controle*/ 
         manipulaDados(evento.target.dataset.controle, evento.target.parentNode)
+
+        atualizaEstatisticas(evento.target.dataset.pecas)
     })
 })
 
@@ -74,5 +77,14 @@ function manipulaDados(operacao,controle){
         peca.value = parseInt(peca.value) +1
     }
 }
+
+function atualizaEstatisticas(peca){
+    console.log(pecas[peca])
+    estatisticas.forEach((elemento) =>{
+        elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
+        
+    })
+}
+
 
 
